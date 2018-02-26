@@ -63,16 +63,24 @@
           <p>Select products and input quantities:</p>
           <div class="products">
             <input type="checkbox" name="plushToy-selected" onclick="activatePlushToysInputBox()" > Plush Toy - $19.82 <br>&emsp;
-            <input type="text" id="quantity-plushtoys" name="quantity-plushtoys" placeholder="quantity"><br><br>
+            <input type="text" id="quantity-plushtoys" name="quantity-plushtoys" placeholder="quantity">
+						<div class="error" id="plushtoy-error"></div>
+						<br><br>
 
             <input type="checkbox" name="stapler-selected" onclick="activateStaplersInputBox()" > Stapler - $7.99 <br>&emsp;
-            <input type="text" id="quantity-staplers" name="quantity-staplers" placeholder="quantity"><br><br>
+            <input type="text" id="quantity-staplers" name="quantity-staplers" placeholder="quantity">
+						<div class="error" id="stapler-error"></div>
+						<br><br>
 
             <input type="checkbox" name="flamethrower-selected" onclick="activateFlamethrowersInputBox()" > Flamethrower - $199.77 <br>&emsp;
-            <input type="text" id="quantity-flamethrowers" name="quantity-flamethrowers" placeholder="quantity"><br><br>
+            <input type="text" id="quantity-flamethrowers" name="quantity-flamethrowers" placeholder="quantity">
+						<div class="error" id="flamethrower-error"></div>
+						<br><br>
 
             <input type="checkbox" name="deodorant-selected" onclick="activateDeodorantInputBox()" > Deodorant - $3.98 <br>&emsp;
-            <input type="text" id="quantity-deodorants" name="quantity-deodorants" placeholder="quantity"><br><br>
+            <input type="text" id="quantity-deodorants" name="quantity-deodorants" placeholder="quantity">
+						<div class="error" id="deodorant-error"></div>
+						<br><br>
           </div>
 
           <p>Select a shipping option:</p>
@@ -80,6 +88,7 @@
             <input type="radio" name="shipping-selection" value="A" > Free (7 days)<br>
             <input type="radio" name="shipping-selection" value ="B" > $50.00 (overnight)<br>
             <input type="radio" name="shipping-selection" value="C" > $5.00 (3 days)<br>
+						<div class="error" id="deodorant-error"></div>
             <br>
           </div>
 
