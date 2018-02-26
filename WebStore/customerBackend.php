@@ -52,13 +52,13 @@
     $shippingType = "3 days";
     $shippingCost = 5;
   }
+  //Number_format formats number with only with two decimal places (in this case)
+  $subtotalPlushToys = number_format($quantityPlushToys * $costPlushToy,2);
+  $subtotalStaplers = number_format($quantityStaplers * $costStapler,2);
+  $subtotalFlamethrowers = number_format($quantityFlamethrowers * $costFlamethrower,2);
+  $subtotalDeodorants = number_format($quantityDeodorants * $costDeodorant,2);
 
-  $subtotalPlushToys = $quantityPlushToys * $costPlushToy;
-  $subtotalStaplers = $quantityStaplers * $costStapler;
-  $subtotalFlamethrowers = $quantityFlamethrowers * $costFlamethrower;
-  $subtotalDeodorants = $quantityDeodorants * $costDeodorant;
-
-  //Adding all the costs and fomatting number with only two decimals
+  //Adding all the costs and fomatting number with only two decimal places
   $totalCost = number_format($subtotalPlushToys + $subtotalStaplers + $subtotalFlamethrowers + $subtotalDeodorants + $shippingCost,2);
 
   echo "<h1 style='text-align: center;'>Welcome ". $username . "!</h1>";
