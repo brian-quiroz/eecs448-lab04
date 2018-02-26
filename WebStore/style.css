@@ -1,0 +1,33 @@
+h1 {
+  text-align: center;
+  color: #0079b6;
+  font-family: Helvetica;
+ }*/
+ input {
+   font-size: 18px;
+ }
+ .container-fluid {
+   font-size: 18px;
+ }
+ .products {
+   font-size: 18px;
+   color: green;
+ }
+ .products:hover {
+   color: #03930E;
+ }
+ .shipping {
+   font-size: 18px;
+   color: #76008D;
+ }
+ .shipping:hover {
+   color: #9300B0;
+ }
+ .error {
+   font-size: 12px;
+   color: red;
+ }
+ #error-message {
+   font-size: 12pt;
+   color: red;
+ }
