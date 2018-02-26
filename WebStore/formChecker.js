@@ -5,7 +5,7 @@ let deodorantToggler = false;
 
 function validateForm() {
   let validForm = true;
-  let message = document.getElementById('error-message');
+  let message = document.getElementById("error-message");
 
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
@@ -30,14 +30,14 @@ function validateForm() {
   let indexOfAtSymbol = username.indexOf("@");
   if (indexOfAtSymbol === -1 || indexOfAtSymbol === 0 || username[username.length - 4] != '.') {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    document.getElementById("username-error").innerHTML = "<p>Please input a valid username.</p>";
     //alert("Error. Please input a valid email address!");
   }
 
   //Checking password
   if (password === "") {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    document.getElementById("password-error").innerHTML = "<p>Please input a valid password.</p>";
     //alert("Error. Please input a valid password!")
   }
 
@@ -66,29 +66,29 @@ function validateForm() {
   }
   if (!isOneChecked) {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
     //alert("No buttons checked for product selection!");
   }
 
   //Checking quantity
   if ((plushToySelected) && (isNaN(quantityPlushToys) || quantityPlushToys === "" || quantityPlushToys < 0)) {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
     //alert("Error. Please input a valid quantity of plush toys!");
   }
   if ((staplerSelected) && (isNaN(quantityStaplers) || quantityStaplers === "" || quantityStaplers < 0)) {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
     //alert("Error. Please input a valid quantity of staplers!");
   }
   if ((flamethrowerSelected) && (isNaN(quantityFlamethrowers) || quantityFlamethrowers === "" || quantityFlamethrowers < 0)) {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
     //alert("Error. Please input a valid quantity of flamethrowers!");
   }
   if ((deodorantSelected) && (isNaN(quantityDeodorants) || quantityDeodorants === "" || quantityDeodorants < 0)) {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
     //alert("Error. Please input a valid quantity of deodorants!");
   }
 
@@ -102,20 +102,21 @@ function validateForm() {
   }
   if (!isOneChecked) {
     validForm = false;
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
     //alert("No buttons checked for shipping selection!");
   }
 
   if (!validForm) {
-    message.innerHTML('<p>Wrong Input. Please try again!</p>');
+    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
   }
 
   if (validForm) {
     return validForm;
   } else {
+    return false;
+     window.stop();
     resetForm();
   }
-
 }
 
 //Function adapted from http://javascript-coder.com/javascript-form/javascript-reset-form.phtml
@@ -199,4 +200,10 @@ function activateDeodorantInputBox() {
     deodorantToggler = false;
   }
 
+}
+
+function submitValidation() {
+ if(validateForm()) {
+   document.getElementById("main-form").submit();
+ }
 }

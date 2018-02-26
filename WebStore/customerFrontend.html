@@ -35,6 +35,14 @@
       .shipping:hover {
         color: #9300B0;
       }
+			.error {
+				font-size: 12px;
+				color: red;
+			}
+			#error-message {
+				font-size: 12pt;
+				color: red;
+			}
     </style>
 
     <script type="text/javascript" src="formChecker.js"></script>
@@ -43,13 +51,14 @@
     <body onload="deactivateProductInputBoxes()">
       <div class="container-fluid">
         <h1>Welcome to the Webstore!</h1>
-        <!--<form action="customerBackend.php" method="post">-->
-        <form onsubmit="return validateForm()" id="main-form" action="customerBackend.php" method="post">
+        <form onsubmit="return validateForm();" id="main-form" action="customerBackend.php" method="post">
           <p>Input a username and a password:</p>
           <input type="text" id="username" name="username" placeholder="username">
-          <br><br>
+					<div class="error" id="username-error"></div>
+          <br>
           <input type="text" id="password" name="password" placeholder="password">
-          <br><br>
+					<div class="error" id="password-error"></div>
+          <br>
 
           <p>Select products and input quantities:</p>
           <div class="products">
@@ -77,7 +86,7 @@
           <div class ="row">
 
           <div class ="col-md-1">
-          <input class ="btn btn-block btn-primary" type="submit" value="Submit">
+          <input class ="btn btn-block btn-primary" type="button" onclick="submitValidation()" value="Submit">
           </div>
 
         </form>
