@@ -42,15 +42,15 @@
   //Each selection has a value associated with it (A, B, or C); from the value we can tell what the selection was and its cost
   if ($shippingSelection == "A") {
     $shippingType = "7 days";
-    $shippingCost = 0;
+    $shippingCost = number_format(0,2);
   }
   if ($shippingSelection == "B") {
     $shippingType = "Overnight";
-    $shippingCost = 50;
+    $shippingCost = number_format(50,2);
   }
   if ($shippingSelection == "C") {
     $shippingType = "3 days";
-    $shippingCost = 5;
+    $shippingCost = number_format(5,2);
   }
   //Number_format formats number with only with two decimal places (in this case)
   $subtotalPlushToys = number_format($quantityPlushToys * $costPlushToy,2);
