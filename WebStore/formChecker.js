@@ -29,13 +29,16 @@ function validateForm() {
   if (indexOfAtSymbol === -1 || indexOfAtSymbol === 0 || username[username.length - 4] != '.') {
     validForm = false;
     document.getElementById("username-error").innerHTML = "<p>Please input a valid username.</p>";
+  } else {
+    document.getElementById("username-error").innerHTML = "";
   }
 
   //Checking password
   if (password === "") {
     validForm = false;
     document.getElementById("password-error").innerHTML = "<p>Please input a valid password.</p>";
-    //alert("Error. Please input a valid password!")
+  } else {
+    document.getElementById("password-error").innerHTML = "";
   }
 
   //Checking checkbox buttons and determining which item was selected
@@ -63,26 +66,39 @@ function validateForm() {
   }
   if (!isOneChecked) {
     validForm = false;
-    message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
-    //alert("No buttons checked for product selection!");
+    document.getElementById("checkbox-error").innerHTML = "<p>Please select at least one item.</p>";
+  } else {
+    document.getElementById("checkbox-error").innerHTML = "";
   }
 
   //Checking quantity
   if ((plushToySelected) && (isNaN(quantityPlushToys) || quantityPlushToys === "" || quantityPlushToys < 0)) {
     validForm = false;
     document.getElementById("plushtoy-error").innerHTML = "<p>Please input a valid quantity of plush toys.</p>";
+  } else {
+    document.getElementById("plushtoy-error").innerHTML = "";
   }
+
   if ((staplerSelected) && (isNaN(quantityStaplers) || quantityStaplers === "" || quantityStaplers < 0)) {
     validForm = false;
     document.getElementById("stapler-error").innerHTML = "<p>Please input a valid quantity of staplers.</p>";
+  } else {
+    document.getElementById("stapler-error").innerHTML = "";
   }
+
   if ((flamethrowerSelected) && (isNaN(quantityFlamethrowers) || quantityFlamethrowers === "" || quantityFlamethrowers < 0)) {
     validForm = false;
-    document.getElementById("flamethrower-error").innerHTML = "<p>Please input a quantity of flamethrowers.</p>";
+    document.getElementById("flamethrower-error").innerHTML = "<p>Please input a valid quantity of flamethrowers.</p>";
+  } else {
+    document.getElementById("flamethrower-error").innerHTML = "";
   }
+
+
   if ((deodorantSelected) && (isNaN(quantityDeodorants) || quantityDeodorants === "" || quantityDeodorants < 0)) {
     validForm = false;
-    document.getElementById("deodorant-error").innerHTML = "<p>Please input a quantity of deodorants.</p>";
+    document.getElementById("deodorant-error").innerHTML = "<p>Please input a valid quantity of deodorants.</p>";
+  } else {
+    document.getElementById("deodorant-error").innerHTML = "";
   }
 
   //Checking radio bottons
@@ -95,20 +111,26 @@ function validateForm() {
   }
   if (!isOneChecked) {
     validForm = false;
-      document.getElementById("shipping-error").innerHTML = "<p>Please select an option for shipping.</p>";
+    document.getElementById("shipping-error").innerHTML = "<p>Please select an option for shipping.</p>";
+  } else {
+    document.getElementById("shipping-error").innerHTML = "";
   }
 
   if (!validForm) {
     message.innerHTML = "<br><p>Wrong Input. Please try again!</p>";
+  } else {
+    message.innerHTML = "";
   }
 
-  if (validForm) {
+  return validForm;
+
+  /*if (validForm) {
     return validForm;
   } else {
     return false;
      window.stop();
     resetForm();
-  }
+  }*/
 }
 
 //Function adapted from http://javascript-coder.com/javascript-form/javascript-reset-form.phtml
@@ -197,5 +219,16 @@ function activateDeodorantInputBox() {
 function submitValidation() {
  if(validateForm()) {
    document.getElementById("main-form").submit();
+ } else {
+   resetForm();
+   deactivateProductInputBoxes();
+   plushToysCheckboxToggler = false;
+   staplersCheckboxToggler = false;
+   flamethrowersCheckboxToggler = false;
+   deodorantToggler = false;
+   /*document.getElementById("quantity-plushtoys").value = "";
+   document.getElementById("quantity-staplers").value = "";
+   document.getElementById("quantity-flamethrowers").value = "";
+   document.getElementById("quantity-deodorants").value = "";*/
  }
 }
