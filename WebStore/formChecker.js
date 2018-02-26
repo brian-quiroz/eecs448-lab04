@@ -1,3 +1,4 @@
+//These "togglers" will tell the program when to enable and when to disable the check buttons
 let plushToysCheckboxToggler = false;
 let staplersCheckboxToggler = false;
 let flamethrowersCheckboxToggler = false;
@@ -46,6 +47,7 @@ function validateForm() {
   for (let i = 0; i  < checkCheckbox.length; i++) {
     if (checkCheckbox[i].type == "checkbox" && checkCheckbox[i].checked) {
       isOneChecked = true;
+      //The second, fourth, sixth, and eighth input tags in the html each contain one of the four products' checkboxes
       switch (i) {
         case 2:
           plushToySelected = true;
@@ -71,7 +73,7 @@ function validateForm() {
     document.getElementById("checkbox-error").innerHTML = "";
   }
 
-  //Checking quantity
+  //Checking quantity of each item (only when that item is selected)
   if ((plushToySelected) && (isNaN(quantityPlushToys) || quantityPlushToys === "" || quantityPlushToys < 0)) {
     validForm = false;
     document.getElementById("plushtoy-error").innerHTML = "<p>Please input a valid quantity of plush toys.</p>";
@@ -111,7 +113,7 @@ function validateForm() {
   }
   if (!isOneChecked) {
     validForm = false;
-    document.getElementById("shipping-error").innerHTML = "<p>Please select an option for shipping.</p>";
+    document.getElementById("shipping-error").innerHTML = "<p>Please select a shipping option.</p>";
   } else {
     document.getElementById("shipping-error").innerHTML = "";
   }
@@ -123,18 +125,11 @@ function validateForm() {
   }
 
   return validForm;
-
-  /*if (validForm) {
-    return validForm;
-  } else {
-    return false;
-     window.stop();
-    resetForm();
-  }*/
 }
 
 //Function adapted from http://javascript-coder.com/javascript-form/javascript-reset-form.phtml
 function resetForm() {
+  //Resets everything in the form
   oForm = document.getElementById("main-form");
   let frm_elements = oForm.elements;
   for (i = 0; i < frm_elements.length; i++) {
@@ -157,6 +152,7 @@ function resetForm() {
   }
 }
 
+//The input boxes should start by being disabled
 function deactivateProductInputBoxes() {
   document.getElementById("quantity-plushtoys").setAttribute("disabled", false);
   document.getElementById("quantity-staplers").setAttribute("disabled", false);
@@ -164,7 +160,9 @@ function deactivateProductInputBoxes() {
   document.getElementById("quantity-deodorants").setAttribute("disabled", false);
 }
 
-function activatePlushToysInputBox() {
+//These four function toggles the product input boxes between activated and disactivated
+
+function togglePlushToysInputBox() {
   if (!plushToysCheckboxToggler) {
     document.getElementById("quantity-plushtoys").removeAttribute("disabled");
     document.getElementById("quantity-plushtoys").focus();
@@ -177,7 +175,7 @@ function activatePlushToysInputBox() {
 
 }
 
-function activateStaplersInputBox() {
+function toggleStaplersInputBox() {
   if (!staplersCheckboxToggler) {
     document.getElementById("quantity-staplers").removeAttribute("disabled");
     document.getElementById("quantity-staplers").focus();
@@ -190,7 +188,7 @@ function activateStaplersInputBox() {
 
 }
 
-function activateFlamethrowersInputBox() {
+function toggleFlamethrowersInputBox() {
   if (!flamethrowersCheckboxToggler) {
     document.getElementById("quantity-flamethrowers").removeAttribute("disabled");
     document.getElementById("quantity-flamethrowers").focus();
@@ -203,7 +201,7 @@ function activateFlamethrowersInputBox() {
 
 }
 
-function activateDeodorantInputBox() {
+function toggleDeodorantInputBox() {
   if (!deodorantToggler) {
     document.getElementById("quantity-deodorants").removeAttribute("disabled");
     document.getElementById("quantity-deodorants").focus();
@@ -217,18 +215,18 @@ function activateDeodorantInputBox() {
 }
 
 function submitValidation() {
+ //If the form is valid, submit the form.
  if(validateForm()) {
    document.getElementById("main-form").submit();
- } else {
+ }
+ 
+ //If the form is not valid, reset the form, deactivate products input boxes, and set togglers to false
+ else {
    resetForm();
    deactivateProductInputBoxes();
    plushToysCheckboxToggler = false;
    staplersCheckboxToggler = false;
    flamethrowersCheckboxToggler = false;
    deodorantToggler = false;
-   /*document.getElementById("quantity-plushtoys").value = "";
-   document.getElementById("quantity-staplers").value = "";
-   document.getElementById("quantity-flamethrowers").value = "";
-   document.getElementById("quantity-deodorants").value = "";*/
  }
 }

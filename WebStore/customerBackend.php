@@ -1,4 +1,5 @@
 <?php
+
   $username = $_POST["username"];
   $password = $_POST["password"];
 
@@ -7,6 +8,7 @@
   $flamethrowerIsSelected = $_POST["flamethrower-selected"];
   $deodorantIsSelected = $_POST["deodorant-selected"];
 
+  //Quantities initially set to 0
   $quantityPlushToys = 0;
   $quantityStaplers = 0;
   $quantityFlamethrowers = 0;
@@ -17,6 +19,7 @@
   $costFlamethrower = 199.77;
   $costDeodorant = 3.98;
 
+  //For each product, if it was selected, setting the quantity equal to the quantity input by the user; otherwise the quantity will remain 0
 
   if ($plushToyIsSelected == "on") {
     $quantityPlushToys = $_POST["quantity-plushtoys"];
@@ -36,6 +39,7 @@
 
   $shippingSelection = $_POST["shipping-selection"];
 
+  //Each selection has a value associated with it (A, B, or C); from the value we can tell what the selection was and its cost
   if ($shippingSelection == "A") {
     $shippingType = "7 days";
     $shippingCost = 0;
@@ -54,22 +58,11 @@
   $subtotalFlamethrowers = $quantityFlamethrowers * $costFlamethrower;
   $subtotalDeodorants = $quantityDeodorants * $costDeodorant;
 
+  //Adding all the costs and fomatting number with only two decimals
   $totalCost = number_format($subtotalPlushToys + $subtotalStaplers + $subtotalFlamethrowers + $subtotalDeodorants + $shippingCost,2);
 
   echo "<h1 style='text-align: center;'>Welcome ". $username . "!</h1>";
   echo "<p style='font-size: 20px;'>Your password is: " . $password . "</p>";
-
-  /*echo "Plush toy selected: " . $plushToyIsSelected . "<br>";
-  echo "Stapler selected: " . $staplerIsSelected . "<br>";
-  echo "Flamethrower selected: " . $flamethrowerIsSelected . "<br>";
-  echo "Deodorant selected: " . $deodorantIsSelected . "<br>";
-
-  echo "Quantity plush toys: " . $quantityPlushToys . "<br>";
-  echo "Quantity staplers: " . $quantityStaplers . "<br>";
-  echo "Quantity flamethrowers: " . $quantityFlamethrowers . "<br>";
-  echo "Quantity deodorants: " . $quantityDeodorants . "<br>";
-
-  echo "Shipping: " . $shippingType . "<br>";*/
 
   echo "<p style='font-size: 20px;'>Your receipt:</p>";
   echo "<table style='border: 1px solid black;'>";
